@@ -5,12 +5,13 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+}
 
-  this.info = function() {
-    let strInfo = title + ", by " + author + ", " + pages + " pages, ";
-    let strRead = (read === true ? "already read." : "not yet read.");
-    return strInfo + strRead;
-  }
+// Inherits Book object.
+Book.prototype.info = function() {
+  let strInfo = this.title + ", by " + this.author + ", " + this.pages + " pages, ";
+  let strRead = (this.read === true ? "already read." : "not yet read.");
+  return strInfo + strRead;
 }
 
 let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
@@ -26,8 +27,9 @@ function displayBooks(library) {
   });
 }
 
+// TODO: function to add a new book into the library
 function addBookToLibrary() {
-  // do stuff here
+  
 }
 
 displayBooks(library);
