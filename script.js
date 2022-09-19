@@ -6,59 +6,28 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
-/*   this.info = function() {
+  this.info = function() {
     let strInfo = title + ", by " + author + ", " + pages + " pages, ";
     let strRead = (read === true ? "already read." : "not yet read.");
     return strInfo + strRead;
-  } */
+  }
 }
 
-let myLibrary = [
-  {
-		title: 'test1',
-		author: 'test',
-		pages: 123,
-		read: true
-	},
-	{
-		title: 'test2',
-		author: 'test',
-		pages: 123,
-		read: false
-	},
-	{
-		title: 'test3',
-		author: 'test',
-		pages: 123,
-		read: true
-	},
-	{
-		title: 'test4',
-		author: 'test',
-		pages: 123,
-		read: false
-	},
-	{
-		title: 'test5',
-		author: 'test',
-		pages: 123,
-		read: true
-	}
-];
+let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
+let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
+let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false);
+let library = [theHobbit, lordOfTheFlies, fahrenheit451];
+
+
+// TODO : create a for loop to display all the books in console.
+function displayBooks(library) {
+  library.forEach(book => {
+    console.log(`${book.info()}`);
+  });
+}
 
 function addBookToLibrary() {
   // do stuff here
 }
 
-// TODO : create a for loop to display all the books in console.
-function displayAllBooks(myLibrary) {
-  for (let i = 0; i < myLibrary.length; i++) {
-    let bookCard = myLibrary[i].title + ", by " + myLibrary[i].author +
-    ", " + myLibrary[i].pages + " pages. ";
-    let strRead = ( myLibrary[i].read === true ? "already read." : "not yet read.");
-    
-    console.log(bookCard+strRead);
-  }
-}
-
-displayAllBooks(myLibrary);
+displayBooks(library);
