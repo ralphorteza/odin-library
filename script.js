@@ -37,5 +37,13 @@ function addBookToLibrary(title, author, pages, read) {
   library.push(newBook);
 }
 
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
 /* displayBooks(library);
  */
