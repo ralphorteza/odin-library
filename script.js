@@ -6,6 +6,12 @@ const cancelInput = form[0].querySelector('.cancel');
 
 const addBook = document.getElementById('bookAdd');
 
+
+
+
+
+/******************** Book functionality ********************/
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -20,41 +26,56 @@ Book.prototype.info = function() {
   return strInfo + strRead;
 }
 
+
+
+
+
+/******************** Library functionality ********************/
+
+//let library = [theHobbit, lordOfTheFlies, fahrenheit451];
 // Object isntances for testing.
 /* let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
 let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
 let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false); */
-
 let newBook;
 let library = [];
-//let library = [theHobbit, lordOfTheFlies, fahrenheit451];
 
-
-// TODO : create a for loop to display all the books in console.
+// Displays book instances in console.
 function displayBooks(library) {
   library.forEach(book => {
     console.log(`${book.info()}`);
   });
 }
 
-// TODO: function to add a new book into the library
+// Adds a new book into the library.
 function addBookToLibrary(title, author, pages, read) {
   newBook = new Book(title, author, pages, read);
   library.push(newBook);
 }
 
-/* Form functionality */
 
+
+
+
+/******************** Form functionality ********************/
 
 addBook.addEventListener('click', openForm);
 cancelInput.addEventListener('click', closeForm);
 
-/* Retrieves form data from pop-up form */
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+// Retrieves form data from pop-up form.
 function getFormData(e) {
   e.preventDefault();
 
   let formData = new FormData(form[0]);
-  
+
   let t = formData.get('title');
   let a = formData.get('author');
   let p = formData.get('pages');
@@ -65,19 +86,9 @@ function getFormData(e) {
   closeForm();
 }
 
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-
-/* Implements getFormData */
+// An implementation for getFormData().
 document.addEventListener('DOMContentLoaded', function(){
   submitInput.addEventListener('click', getFormData, false);
 }, false);
 
-
-/* displayBooks(library);
- */
