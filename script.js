@@ -39,16 +39,14 @@ function addBookToLibrary(title, author, pages, read) {
 
 /* Form functionality */
 
+/* TODO: get form elements from popup */ 
 const addBook = document.getElementById('bookAdd');
 addBook.addEventListener('click', openForm);
 
-/* TODO: get form elements from popup */
 function getFormElements() {
 
 }
 
-/* const form = document.getElementById("myForm");
-form.addEventListener() */
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
