@@ -1,4 +1,7 @@
 
+const wrapper = document.querySelector('.wrapper');
+const form = wrapper.querySelectorAll('.form-container');
+const submitInput = form[0].querySelector('button[type="submit"]');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -39,12 +42,23 @@ function addBookToLibrary(title, author, pages, read) {
 
 /* Form functionality */
 
-/* TODO: get form elements from popup */ 
 const addBook = document.getElementById('bookAdd');
 addBook.addEventListener('click', openForm);
 
-function getFormElements() {
+/* TODO: get form elements from popup */ 
+function getFormData(e) {
+  e.preventDefault();
 
+  let formData = new FormData(form[0]);
+  alert(formData.get('title') +" "+ formData.get('author')
+  +" "+ formData.get("pages") +" "+ formData.get('read'));
+
+  let t = formData.get('title');
+  let a = formData.get('author');
+  let p = formData.get('pages');
+  let r = true; // temporary data
+
+  addBookToLibrary(t, a, p, r);
 }
 
 function openForm() {
@@ -55,9 +69,9 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
-function getForm() {
-
-}
+document.addEventListener('DOMContentLoaded', function(){
+  submitInput.addEventListener('click', getFormData, false);
+}, false);
 
 
 /* displayBooks(library);
