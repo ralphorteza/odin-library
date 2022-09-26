@@ -37,6 +37,18 @@ function addBookToLibrary(title, author, pages, read) {
   library.push(newBook);
 }
 
+/* Form functionality */
+
+const addBook = document.getElementById('bookAdd');
+addBook.addEventListener('click', openForm);
+
+/* TODO: get form elements from popup */
+function getFormElements() {
+
+}
+
+/* const form = document.getElementById("myForm");
+form.addEventListener() */
 function openForm() {
   document.getElementById("myForm").style.display = "block";
 }
@@ -44,6 +56,11 @@ function openForm() {
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+function getForm() {
+
+}
+
 
 /* displayBooks(library);
  */
