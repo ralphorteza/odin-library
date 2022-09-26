@@ -24,9 +24,13 @@
         <input type="text" placeholder="Author of book" name="author" id="authorField" required>
         <label for="pages"></label>
         <input type="text" placeholder="# of pages" name="pages" id="pagesField" required>
-        <label for="read">Completed book?</label>
-        <input type="radio" name="read">
-
+        <div>
+          Book Completed?
+          <label for="completed">Yes</label>
+          <input type="radio" name="read" value="completed">
+          <label for="notCompleted">No</label>
+          <input type="radio" name="read" value="notCompleted">
+        </div>
         <button type="submit" class="btn">Add</button>
         <button type="button" class="btn cancel" onclick="closeFrom()">Cancel</button>
       </form>

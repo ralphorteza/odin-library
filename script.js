@@ -13,7 +13,7 @@ function Book(title, author, pages, read) {
 // Inherits Book object.
 Book.prototype.info = function() {
   let strInfo = this.title + ", by " + this.author + ", " + this.pages + " pages, ";
-  let strRead = (this.read === true ? "already read." : "not yet read.");
+  let strRead = (this.read === true ? "completed." : "not completed.");
   return strInfo + strRead;
 }
 
@@ -45,7 +45,7 @@ function addBookToLibrary(title, author, pages, read) {
 const addBook = document.getElementById('bookAdd');
 addBook.addEventListener('click', openForm);
 
-/* TODO: get form elements from popup */ 
+/* Retrieves form data from pop-up form */
 function getFormData(e) {
   e.preventDefault();
 
@@ -56,7 +56,8 @@ function getFormData(e) {
   let t = formData.get('title');
   let a = formData.get('author');
   let p = formData.get('pages');
-  let r = true; // temporary data
+  let rRaw = formData.get('read');
+  let r = (rRaw === "completed" ? true : false);
 
   addBookToLibrary(t, a, p, r);
   closeForm();
@@ -70,6 +71,7 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
+/* Implements getFormData */
 document.addEventListener('DOMContentLoaded', function(){
   submitInput.addEventListener('click', getFormData, false);
 }, false);
