@@ -59,6 +59,7 @@ function getFormData(e) {
   let r = true; // temporary data
 
   addBookToLibrary(t, a, p, r);
+  closeForm();
 }
 
 function openForm() {
