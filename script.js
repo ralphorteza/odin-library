@@ -18,9 +18,9 @@ Book.prototype.info = function() {
 }
 
 // Object isntances for testing.
-let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
+/* let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
 let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
-let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false);
+let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false); */
 
 let newBook;
 let library = [];
