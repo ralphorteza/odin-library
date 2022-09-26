@@ -2,6 +2,9 @@
 const wrapper = document.querySelector('.wrapper');
 const form = wrapper.querySelectorAll('.form-container');
 const submitInput = form[0].querySelector('button[type="submit"]');
+const cancelInput = form[0].querySelector('.cancel');
+
+const addBook = document.getElementById('bookAdd');
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -42,17 +45,16 @@ function addBookToLibrary(title, author, pages, read) {
 
 /* Form functionality */
 
-const addBook = document.getElementById('bookAdd');
+
 addBook.addEventListener('click', openForm);
+cancelInput.addEventListener('click', closeForm);
 
 /* Retrieves form data from pop-up form */
 function getFormData(e) {
   e.preventDefault();
 
   let formData = new FormData(form[0]);
-  alert(formData.get('title') +" "+ formData.get('author')
-  +" "+ formData.get("pages") +" "+ formData.get('read'));
-
+  
   let t = formData.get('title');
   let a = formData.get('author');
   let p = formData.get('pages');
