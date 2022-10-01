@@ -42,7 +42,19 @@ let newBook;
 let library = [];
 
 // TODO: modify displayBooks() to show as cards in the web page.
-
+function displayCard(newBook) {
+  let card = document.createElement('div');
+  card.classList.add("card");     
+  for (let property in newBook) {
+    if(Object.hasOwn(newBook, property)) {    // Loops only for direct inheritance (no prototype).
+      let str = newBook[property];
+      let cardContent = document.createElement('p');
+      cardContent.textContent = str;
+      card.appendChild(cardContent);
+    }
+  }
+  main.appendChild(card);
+}
 
 // Displays book instances in console.
 function displayBooks(library) {
@@ -55,6 +67,7 @@ function displayBooks(library) {
 function addBookToLibrary(title, author, pages, read) {
   newBook = new Book(title, author, pages, read);
   library.push(newBook);
+  displayCard(newBook);
 }
 
 
@@ -87,6 +100,7 @@ function getFormData(e) {
   let r = (rRaw === "completed" ? true : false);
 
   addBookToLibrary(t, a, p, r);
+/*   displayCard(); */
   closeForm();
 }
 
