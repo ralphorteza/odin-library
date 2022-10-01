@@ -1,5 +1,35 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box;}
+/* ==================== Overview ==================== */ 
+
+body, html {
+  margin: 0%;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100%;
+}
+
+* { box-sizing: border-box; }
+
+.wrapper {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows:  repeat(5, 1fr);
+}
+
+
+/* ==================== Grid ==================== */
+
+.header {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+}
+
+.main{
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+}
+
+
+
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
