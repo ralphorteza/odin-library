@@ -1,5 +1,6 @@
 
 const wrapper = document.querySelector('.wrapper');
+const main = wrapper.querySelector('.main');
 const form = wrapper.querySelectorAll('.form-container');
 const submitInput = form[0].querySelector('button[type="submit"]');
 const cancelInput = form[0].querySelector('.cancel');
@@ -39,6 +40,9 @@ let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
 let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false); */
 let newBook;
 let library = [];
+
+// TODO: modify displayBooks() to show as cards in the web page.
+
 
 // Displays book instances in console.
 function displayBooks(library) {

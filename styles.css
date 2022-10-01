@@ -23,13 +23,32 @@ body, html {
   grid-row: 1 / 2;
 }
 
-.main{
+.main {
   grid-column: 1 / -1;
   grid-row: 2 / -1;
 }
 
 
+/* ==================== .main ==================== */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  
+}
 
+.card {
+  width: 200px;
+  height: 200px;
+  background-color: gray;
+
+  padding: 10px;
+}
+
+
+
+/* ==================== Form ==================== */
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
