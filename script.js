@@ -4,11 +4,7 @@ const main = wrapper.querySelector('.main');
 const form = wrapper.querySelectorAll('.form-container');
 const submitInput = form[0].querySelector('button[type="submit"]');
 const cancelInput = form[0].querySelector('.cancel');
-
 const addBook = document.getElementById('bookAdd')
-
-// const card = document.getElementsByClassName('card');  
-// const deleteBtn = document.querySelector('.delete');
 
 
 
@@ -41,37 +37,20 @@ let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
 let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false); */
 let newBook;
 let library = [];
-// TODO: create a function that deletes a card from the library.
-document.addEventListener('click', deleteCard);
-function deleteCard() {
-  let card = document.getElementsByClassName('card');  
-  let deleteBtn = document.querySelector('.delete');
 
-  let parent = deleteBtn.parentNode;
-  parent.style.display = 'none';
-} 
-
-// TODO: create a function that generates a default card.
-function generateCard() {
+/* Generates a new card with book info */
+function generateCard(newBook) {
   let card = document.createElement('div');
   card.classList.add("card");
-
+  
+  // Create delete button onto card.
   let deleteBtn = document.createElement('button');
   deleteBtn.textContent = "delete";
   deleteBtn.setAttribute('type', 'button');
   deleteBtn.className = "delete";
   card.appendChild(deleteBtn);
 
-  return card;
-}
-
-// TODO: modify displayBooks() to show as cards in the web page.
-// TODO: validate type of property and add in text content.
-function displayCard(newBook) {
-  // let card = document.createElement('div');
-  // card.classList.add("card");
-  
-  let card = generateCard();
+  // Fills book information into card.
   for (let property in newBook) {
     if(Object.hasOwn(newBook, property)) {    // Loops only for direct inheritance (no prototype).
       let str = newBook[property];
@@ -80,7 +59,23 @@ function displayCard(newBook) {
       card.appendChild(cardContent);
     }
   }
+  return card;
+}
+
+function deleteCard() {
+  let card = document.getElementsByClassName('card');  
+  let deleteBtn = document.querySelector('.delete');
+
+  let parent = deleteBtn.parentNode.remove();
+} 
+
+function displayCard(newBook) {
+  let card = generateCard(newBook);
   main.appendChild(card);
+
+  // Deletes the card off the webpage and DOM
+  card.addEventListener('click', deleteCard);
+
 }
 
 // Displays book instances in console.
@@ -97,6 +92,7 @@ function addBookToLibrary(title, author, pages, read) {
   displayCard(newBook);
 }
 
+// TODO: create a function that removes book from the library.
 
 
 
