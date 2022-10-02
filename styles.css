@@ -7,6 +7,9 @@ body, html {
 }
 
 * { box-sizing: border-box; }
+p {
+  margin: 0;
+}
 
 .wrapper {
   height: 100%;
@@ -42,8 +45,15 @@ body, html {
   width: 200px;
   height: 200px;
   background-color: gray;
-
   padding: 10px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.delete {
+  align-self: flex-end;
 }
 
 
