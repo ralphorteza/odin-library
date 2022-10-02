@@ -41,10 +41,19 @@ let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false
 let newBook;
 let library = [];
 
+// TODO: create a function that generates a default card.
+function generateCard() {
+  let card = document.createElement('div');
+  card.classList.add("card");
+  return card;
+}
+
 // TODO: modify displayBooks() to show as cards in the web page.
 function displayCard(newBook) {
-  let card = document.createElement('div');
-  card.classList.add("card");     
+  // let card = document.createElement('div');
+  // card.classList.add("card");
+  
+  let card = generateCard();
   for (let property in newBook) {
     if(Object.hasOwn(newBook, property)) {    // Loops only for direct inheritance (no prototype).
       let str = newBook[property];
