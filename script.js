@@ -59,22 +59,29 @@ function generateCard(newBook) {
       card.appendChild(cardContent);
     }
   }
+/*   console.log(newBook); */
   return card;
 }
 
-function deleteCard() {
-  let card = document.getElementsByClassName('card');  
+/* function deleteCard() {
+  let card = document.getElementsByClassName('.card');  
   let deleteBtn = document.querySelector('.delete');
 
   let parent = deleteBtn.parentNode.remove();
-} 
+}  */
 
 function displayCard(newBook) {
   let card = generateCard(newBook);
   main.appendChild(card);
 
+  function deleteCard() {
+    console.log(card.textContent);
+    card.remove();
+  } 
+
   // Deletes the card off the webpage and DOM
-  card.addEventListener('click', deleteCard);
+  let deleteBtn = card.querySelector('.delete');
+  deleteBtn.addEventListener('click', deleteCard);
 
 }
 
@@ -123,7 +130,6 @@ function getFormData(e) {
   let r = (rRaw === "completed" ? true : false);
 
   addBookToLibrary(t, a, p, r);
-/*   displayCard(); */
   closeForm();
 }
 
@@ -133,3 +139,8 @@ document.addEventListener('DOMContentLoaded', function(){
   submitInput.addEventListener('click', getFormData, false);
 }, false);
 
+
+/* testing purposes */
+addBookToLibrary("The Hobbit", ".R.R. Tolkien", 295, true);
+addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 256, false);
+addBookToLibrary("Lord of the Flies", "William Golding", 224, false);
