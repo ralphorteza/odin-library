@@ -6,6 +6,10 @@ const submitInput = form[0].querySelector('button[type="submit"]');
 const cancelInput = form[0].querySelector('.cancel');
 const addBook = document.getElementById('bookAdd')
 
+let library = [];
+let newBook;
+
+
 
 
 /******************** Book functionality ********************/
@@ -27,22 +31,14 @@ Book.prototype.info = function() {
 
 
 
-
 /******************** Library functionality ********************/
-
-//let library = [theHobbit, lordOfTheFlies, fahrenheit451];
-// Object isntances for testing.
-/* let theHobbit = new Book("The Hobbit", ".R.R. Tolkien", 295, true);
-let fahrenheit451 = new Book("Fahrenheit 451", "Ray Bradbury", 256, false);
-let lordOfTheFlies = new Book("Lord of the Flies", "William Golding", 224, false); */
-let newBook;
-let library = [];
 
 /* Generates a new card with book info */
 function generateCard(newBook) {
   let card = document.createElement('div');
   card.classList.add("card");
   
+
   // Create delete button onto card.
   let deleteBtn = document.createElement('button');
   deleteBtn.textContent = "delete";
@@ -59,25 +55,30 @@ function generateCard(newBook) {
       card.appendChild(cardContent);
     }
   }
-/*   console.log(newBook); */
   return card;
 }
 
-/* function deleteCard() {
-  let card = document.getElementsByClassName('.card');  
-  let deleteBtn = document.querySelector('.delete');
-
-  let parent = deleteBtn.parentNode.remove();
-}  */
 
 function displayCard(newBook) {
   let card = generateCard(newBook);
   main.appendChild(card);
 
   function deleteCard() {
-    console.log(card.textContent);
+    let cardChildren = card.childNodes;
+    let cardAuthor = cardChildren[2].textContent;
+    let cardPage = cardChildren[3].textContent;
+
+    removeFromLibrary(cardAuthor, cardPage);
     card.remove();
-  } 
+  }
+
+  function removeFromLibrary(cardAuthor, cardPage) {
+    let index = library.findIndex(book =>
+      book.author === cardAuthor && book.pages == cardPage);
+      console.log(index);
+      library.splice(index, 1);
+      console.table(library);
+  }
 
   // Deletes the card off the webpage and DOM
   let deleteBtn = card.querySelector('.delete');
@@ -99,7 +100,6 @@ function addBookToLibrary(title, author, pages, read) {
   displayCard(newBook);
 }
 
-// TODO: create a function that removes book from the library.
 
 
 
@@ -133,14 +133,12 @@ function getFormData(e) {
   closeForm();
 }
 
-
 // An implementation for getFormData().
 document.addEventListener('DOMContentLoaded', function(){
   submitInput.addEventListener('click', getFormData, false);
 }, false);
 
-
 /* testing purposes */
-addBookToLibrary("The Hobbit", ".R.R. Tolkien", 295, true);
+addBookToLibrary("The Hobbit", "R.R. Tolkien", 295, true);
 addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 256, false);
 addBookToLibrary("Lord of the Flies", "William Golding", 224, false);
