@@ -7,7 +7,9 @@ const cancelInput = form[0].querySelector('.cancel');
 const addBook = document.getElementById('bookAdd')
 
 let newBook;
-/******************** Library Functionality ********************/
+
+/******************** Library functionality ********************/
+
 class Library {
   constructor() {
     this.books = [];
@@ -31,7 +33,6 @@ class Library {
 const library = new Library();
 
 
-
 /******************** Book functionality ********************/
 
 class Book {
@@ -48,9 +49,7 @@ class Book {
   }
 }
 
-
-
-/******************** Card Functionality ********************/
+/******************** Card functionality ********************/
 
 /* Generates a new card with book info */
 function generateCard(newBook) {
@@ -104,10 +103,6 @@ function displayCard(newBook) {
   deleteBtn.addEventListener('click', deleteCard);
 
 }
-
-
-
-
 
 
 /******************** Form functionality ********************/
