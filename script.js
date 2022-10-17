@@ -6,27 +6,33 @@ const submitInput = form[0].querySelector('button[type="submit"]');
 const cancelInput = form[0].querySelector('.cancel');
 const addBook = document.getElementById('bookAdd')
 
-let library = [];
 let newBook;
+/******************** Library Functionality ********************/
+class Library {
+  constructor() {
+    this.books = [];
+  }
 
+  // Displays book instances in console.
+  displayBooks() {
+    this.books.forEach(book => {
+      console.log(`${book.info()}`);
+    });
+  }
+
+  // Adds a new book into the library.
+  addBookToLibrary(title, author, pages, read) {
+    newBook = new Book(title, author, pages, read);
+    this.books.push(newBook);
+    displayCard(newBook);
+  }
+
+}
+const library = new Library();
 
 
 
 /******************** Book functionality ********************/
-
-/* function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-// Inherits Book object.
-Book.prototype.info = function() {
-  let strInfo = this.title + ", by " + this.author + ", " + this.pages + " pages, ";
-  let strRead = (this.read === true ? "completed." : "not completed.");
-  return strInfo + strRead;
-} */
 
 class Book {
   constructor (
@@ -44,7 +50,7 @@ class Book {
 
 
 
-/******************** Library functionality ********************/
+/******************** Card Functionality ********************/
 
 /* Generates a new card with book info */
 function generateCard(newBook) {
@@ -86,11 +92,11 @@ function displayCard(newBook) {
   }
 
   function removeFromLibrary(cardAuthor, cardPage) {
-    let index = library.findIndex(book =>
+    let index = library.books.findIndex(book =>
       book.author === cardAuthor && book.pages == cardPage);
       console.log(index);
-      library.splice(index, 1);
-      console.table(library);
+      library.books.splice(index, 1);
+      console.table(library.books);
   }
 
   // Deletes the card off the webpage and DOM
@@ -99,19 +105,6 @@ function displayCard(newBook) {
 
 }
 
-// Displays book instances in console.
-function displayBooks(library) {
-  library.forEach(book => {
-    console.log(`${book.info()}`);
-  });
-}
-
-// Adds a new book into the library.
-function addBookToLibrary(title, author, pages, read) {
-  newBook = new Book(title, author, pages, read);
-  library.push(newBook);
-  displayCard(newBook);
-}
 
 
 
@@ -142,7 +135,7 @@ function getFormData(e) {
   let rRaw = formData.get('read');
   let r = (rRaw === "completed" ? true : false);
 
-  addBookToLibrary(t, a, p, r);
+  library.addBookToLibrary(t, a, p, r);
   closeForm();
 }
 
@@ -152,6 +145,6 @@ document.addEventListener('DOMContentLoaded', function(){
 }, false);
 
 /* testing purposes */
-addBookToLibrary("The Hobbit", "R.R. Tolkien", "295", true);
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", "256", false);
-addBookToLibrary("Lord of the Flies", "William Golding", "224", false);
+library.addBookToLibrary("The Hobbit", "R.R. Tolkien", "295", true);
+library.addBookToLibrary("Fahrenheit 451", "Ray Bradbury", "256", false);
+library.addBookToLibrary("Lord of the Flies", "William Golding", "224", false);
