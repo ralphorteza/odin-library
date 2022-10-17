@@ -14,7 +14,7 @@ let newBook;
 
 /******************** Book functionality ********************/
 
-function Book(title, author, pages, read) {
+/* function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -26,8 +26,21 @@ Book.prototype.info = function() {
   let strInfo = this.title + ", by " + this.author + ", " + this.pages + " pages, ";
   let strRead = (this.read === true ? "completed." : "not completed.");
   return strInfo + strRead;
-}
+} */
 
+class Book {
+  constructor (
+    title = 'unknown',
+    author = 'unknown',
+    pages = 0,
+    read = false 
+  ) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+}
 
 
 
@@ -139,6 +152,6 @@ document.addEventListener('DOMContentLoaded', function(){
 }, false);
 
 /* testing purposes */
-addBookToLibrary("The Hobbit", "R.R. Tolkien", 295, true);
-addBookToLibrary("Fahrenheit 451", "Ray Bradbury", 256, false);
-addBookToLibrary("Lord of the Flies", "William Golding", 224, false);
+addBookToLibrary("The Hobbit", "R.R. Tolkien", "295", true);
+addBookToLibrary("Fahrenheit 451", "Ray Bradbury", "256", false);
+addBookToLibrary("Lord of the Flies", "William Golding", "224", false);
